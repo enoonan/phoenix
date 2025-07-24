@@ -603,7 +603,7 @@ defmodule MyApp.MyServer do
       fun.()
     catch
       kind, reason ->
-        stacktrace = System.stacktrace()
+        stacktrace = __STACKTRACE__
         duration = System.monotonic_time() - start_time
         emit_exception(duration, kind, reason, stacktrace)
         :erlang.raise(kind, reason, stacktrace)
